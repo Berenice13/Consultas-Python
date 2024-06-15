@@ -1,14 +1,10 @@
-import mysql.connector 
 import pandas as pd
+from database_connection import DatabaseConnection
 
 # Establece la conexión a la base de datos MySQL
-mysqlConnection = mysql.connector.connect(
-    host='localhost',      
-    user='root',    
-    password='',  
-    database='pubs' 
-)
+db = DatabaseConnection('localhost', 'root', '', 'pubs')
 
+mysqlConnection = db.connect()
 #-------------CONSULTA BASE-------------#
 query = """
 SELECT a.au_id, CONCAT(a.au_fname, ' ', a.au_lname) autor,
@@ -21,6 +17,7 @@ FROM sales s
 """
 
 execute_select = pd.read_sql(query, mysqlConnection)
+mysqlConnection = db.close()
 print("Datos originales:")
 print(execute_select)
 
