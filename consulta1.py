@@ -1,3 +1,4 @@
+#------Ganacias por autor
 import pandas as pd
 from database_connection import DatabaseConnection
 

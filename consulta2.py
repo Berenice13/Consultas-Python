@@ -1,3 +1,4 @@
+#------Ganancias por cliente, por año y region
 import pandas as pd
 from database_connection import DatabaseConnection
 from tabulate import tabulate
@@ -73,7 +74,7 @@ print(clientes_max)
 
 
 
-##-------------MATRIZ FINAL-------------#
+#-------------MATRIZ FINAL-------------#
 def concat_company(series):
     return ', '.join(series)
 
