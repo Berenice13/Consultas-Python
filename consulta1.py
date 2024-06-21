@@ -1,6 +1,7 @@
 #------Ganacias por autor
 import pandas as pd
 from database_connection import DatabaseConnection
+from tabulate import tabulate
 
 # Establece la conexión a la base de datos MySQL
 db = DatabaseConnection('localhost', 'root', '', 'pubs')
@@ -89,8 +90,10 @@ union['total'] = (union['price'] * union['qty'] * union['royaltyper']) / 100
 
 total_por_autor = union.groupby('autor')['total'].sum().reset_index()
 
+table = tabulate(total_por_autor, headers='keys', tablefmt='pretty', showindex=True)
+total_por_autor.to_excel("ganancia_por_autor.xlsx", index=False, engine='openpyxl')
 print("\nResultado final combinado con total por autor:")
-print(total_por_autor)
+print(table)
 
 
 

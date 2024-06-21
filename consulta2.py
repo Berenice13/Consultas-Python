@@ -86,12 +86,9 @@ matriz = clientes_max.pivot_table(
     fill_value=''
 ).reset_index()
 
-
 matriz.columns.name = None
 
 table = tabulate(matriz, headers='keys', tablefmt='simple', showindex=False)
-
-# Mostrar la tabla formateada
 print("Matriz final:")
 print(table)
 
