@@ -101,7 +101,8 @@ print(producto_year_grouped)
 matriz = producto_year_grouped.pivot(index='CompanyName', columns='RegionDescription', values='ProductYear')
 matriz = matriz.fillna('null')
 
-table = tabulate(matriz, headers='keys', tablefmt='simple', showindex=True)
+matriz.to_excel("producto_menos_comprado.xlsx", index=False)
+table = tabulate(matriz, headers='keys', tablefmt='outline', showindex=True)
 print("\nDatos filtrados:")
 print(table)
 

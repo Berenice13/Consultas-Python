@@ -1,4 +1,4 @@
-#------Ganancias por cliente, por año y region
+#------Ganancias por cliente, por año y region 
 import pandas as pd
 from database_connection import DatabaseConnection
 from tabulate import tabulate
@@ -88,8 +88,8 @@ matriz = clientes_max.pivot_table(
 
 
 matriz.columns.name = None
-
-table = tabulate(matriz, headers='keys', tablefmt='simple', showindex=False)
+matriz.to_excel("ganancia_cliente.xlsx", index=False)
+table = tabulate(matriz, headers='keys', tablefmt='simple', showindex=True)
 
 # Mostrar la tabla formateada
 print("Matriz final:")
