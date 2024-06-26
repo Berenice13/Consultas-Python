@@ -86,7 +86,6 @@ matriz = clientes_max.pivot_table(
     fill_value=''
 ).reset_index()
 
-
 matriz.columns.name = None
 matriz.to_excel("ganancia_cliente.xlsx", index=False)
 table = tabulate(matriz, headers='keys', tablefmt='simple', showindex=True)

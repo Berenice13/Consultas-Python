@@ -3,7 +3,6 @@ import pandas as pd
 from database_connection import DatabaseConnection
 from tabulate import tabulate
 
-
 db = DatabaseConnection('localhost', 'root', '', 'pubs')
 
 mysqlConnection = db.connect()
@@ -91,7 +90,9 @@ union['total'] = (union['price'] * union['qty'] * union['royaltyper']) / 100
 total_por_autor = union.groupby('autor')['total'].sum().reset_index()
 table = tabulate(total_por_autor, headers='keys', tablefmt='outline', showindex=False)
 
-print("\nResultado final de total por autor:")
+table = tabulate(total_por_autor, headers='keys', tablefmt='pretty', showindex=True)
+total_por_autor.to_excel("ganancia_por_autor.xlsx", index=False, engine='openpyxl')
+print("\nResultado final combinado con total por autor:")
 print(table)
 
 total_por_autor.to_excel("ganancia_por_autor.xlsx", index=False)
