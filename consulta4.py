@@ -166,4 +166,4 @@ for categoria in categorias_unicas:
 
 matriz_final.to_excel("examen.xlsx", index=False)
 table = tabulate(matriz_final, headers='keys', tablefmt='outline', showindex=True)
-print(table)
+print(table) 
